@@ -8,7 +8,7 @@ $has_advanced_perm = $this->CheckPermission("avplayer_advanced");
 $filter = $this->GetPreference("display_filter",false);
 $instantsearch = $this->GetPreference("display_instantsearch",false);
 $instantsort = $this->GetPreference("display_instantsort",false);
-$adminpages = $this->GetPreference("adminpages", 20);
+$adminpages = $this->GetPreference("adminpages",0);
 $use_hierarchy = $this->GetPreference("use_hierarchy",false);
 $use_session = $this->GetPreference("use_session",true);
 
@@ -45,7 +45,9 @@ echo $this->StartTabHeaders();
 echo $this->EndTabHeaders();
 
 
+
 echo $this->StartTabContent();
+
 
 if( $has_advanced_perm || $this->GetPreference("tabdisplay_player",false) || $this->CheckPermission("avplayer_manage_player") ) {
 	echo $this->StartTab("player");
@@ -92,6 +94,7 @@ if( $has_advanced_perm || $this->GetPreference("tabdisplay_player",false) || $th
 			echo $this->ProcessTemplate("adminpanel.tpl");
 
 	echo $this->EndTab();
+
 }
 
 if( $has_advanced_perm || $this->GetPreference("tabdisplay_mediafile",false) || $this->CheckPermission("avplayer_manage_mediafile") ) {
@@ -175,6 +178,7 @@ if( $has_advanced_perm || $this->GetPreference("tabdisplay_mediafile",false) || 
 
 }
 	$this->smarty->assign(array("nextpage"=>false,"previouspage"=>false,"pageinfo"=>false,"pages"=>false));
+
 
 if( $has_advanced_perm || $this->CheckPermission("Modify Templates") || $this->GetPreference("tabdisplay_fieldoptions",false) ) {
 	echo $this->StartTab("fieldoptions");
@@ -355,4 +359,5 @@ if( $has_advanced_perm ) {
 }
 
 echo $this->EndTabContent();
+
 ?>
